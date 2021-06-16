@@ -1,3 +1,4 @@
+import GlobalStyles from "./libs/GlobalStyles";
 
 function App() {
   return (
