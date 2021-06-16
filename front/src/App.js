@@ -1,9 +1,12 @@
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <GlobalStyles/>
+      <div className="App">
 
-    </div>
+      </div>
+    </>
   );
 }
 
