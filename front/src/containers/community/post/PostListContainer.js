@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPostListAPI } from "../../../libs/api";
-import PostList from "../../../components/comunity/post/PostList"
+import PostList from "../../../components/post/PostList"
 
 const PostListContainer = ({communityIdx}) => {
     const [postList,setPostList] = useState([])
@@ -10,7 +10,7 @@ const PostListContainer = ({communityIdx}) => {
                 const result = await getPostListAPI(communityIdx);
                 setPostList(result.data)
             }catch(e){
-                console.error("[FAIL] GET BORED List",e)
+                console.error("[FAIL] GET POST LIST",e)
             }
 
         }

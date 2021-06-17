@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ko from "date-fns/locale/ko";
-import { formatDistance} from 'date-fns'
+import { formatDistance } from 'date-fns';
 import { Link } from "react-router-dom";
 
 const PostItemWrapper = styled.li`
@@ -29,7 +29,7 @@ const Initial = styled.span`
 
 const PostTitle = styled.p`
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
 `;
 
