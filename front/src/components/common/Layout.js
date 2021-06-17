@@ -13,6 +13,8 @@ const TotalInner = styled.section`
     max-width: 414px;
     min-height: 100vh;
     margin: 0 auto;
+    overflow-x: hidden;
+
 `
 const Layout = ({children}) => {
     return(

@@ -4,7 +4,6 @@ import PostItem from "./PostItem";
 
 
 const PostList = ({postList}) => {
-    console.log(postList)
     return(
             <ul>
                 {postList.map((post)=>(
