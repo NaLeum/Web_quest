@@ -18,7 +18,6 @@ const CreatePostContainer = ({history}) => {
     const onInputChange = (e) => {
         const {value,name}=e.currentTarget
         setFormData({...formData,[name]:value})
-        console.log(formData)
     }
 
     const onSubmitClick = async(e) => {
@@ -32,7 +31,7 @@ const CreatePostContainer = ({history}) => {
     }
     return(
         communityData && 
-        <CreatePost communityData={communityData} onInputChange={onInputChange} onSubmitClick={onSubmitClick}/>
+        <CreatePost formData={formData} communityData={communityData} onInputChange={onInputChange} onSubmitClick={onSubmitClick}/>
     )
 }
 
