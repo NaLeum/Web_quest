@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import MainHeaderItemContainer from "../../../containers/main/header/MainHeaderItemContainer";
 
 const HeaderRow = styled.header`
     width: 414px;
@@ -27,20 +28,22 @@ const MainHeader = ({isCommunitySchool,setIsCommunitySchool,setCommunityIdx}) =>
     return(
         <HeaderRow>
             <HeaderList>
-                <HeaderItem 
+                <MainHeaderItemContainer
                     isCommunitySchool={isCommunitySchool}
                     value={0}
-                    onClick={()=> setIsCommunitySchool(0)}
+                    setIsCommunitySchool={setIsCommunitySchool}
+                    setCommunityIdx={setCommunityIdx}
                 >
                     모든 학교
-                </HeaderItem>
-                <HeaderItem
+                </MainHeaderItemContainer>
+                <MainHeaderItemContainer
                     isCommunitySchool={isCommunitySchool}
                     value={1}
-                    onClick={()=> setIsCommunitySchool(1)}
+                    setIsCommunitySchool={setIsCommunitySchool}
+                    setCommunityIdx={setCommunityIdx}
                 >
                     우리 학교
-                </HeaderItem>
+                </MainHeaderItemContainer>
             </HeaderList>
         </HeaderRow>
     )

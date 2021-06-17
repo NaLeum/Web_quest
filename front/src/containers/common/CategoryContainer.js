@@ -3,7 +3,7 @@ import Category from "../../components/main/category/Category";
 import { getBoredListAPI } from "../../libs/api";
 
 
-const CategoryContainer = ({isCommunitySchool}) => {
+const CategoryContainer = ({isCommunitySchool,setCommunityIdx}) => {
     const [boardList,setBoredList] = useState([])
     useEffect(()=>{(
         async()=>{
@@ -16,10 +16,14 @@ const CategoryContainer = ({isCommunitySchool}) => {
 
         }
     )();
-    },[isCommunitySchool])
+    },[isCommunitySchool]);
+    const onCategoryClick = (e) => {
+        const targetValue = e.currentTarget.getAttribute('value');
+        setCommunityIdx(targetValue)
+    }
     return(
         boardList.length !== 0 &&
-        <Category boardList={boardList}/>
+        <Category boardList={boardList} onCategoryClick={onCategoryClick}/>
     )
 }
 

@@ -12,12 +12,12 @@ const CategoryList = styled.ul`
     display: flex;
 `;
 
-const Category = ({boardList}) => {
+const Category = ({boardList,onCategoryClick}) => {
     return (
         <CategoryWrapper>
             <CategoryList>
                 {boardList.map((item, idx)=>(
-                    <CategoryItem key={idx} item={item}/>
+                    <CategoryItem key={idx} item={item} onCategoryClick={onCategoryClick}/>
                 ))}
             </CategoryList>
         </CategoryWrapper>

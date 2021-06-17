@@ -21,10 +21,9 @@ const ItemName = styled.span`
     margin-bottom: -2px;
 `;
 
-const CategoryItem = ({item}) => {
-    console.log(item)
+const CategoryItem = ({item,onCategoryClick}) => {
     return(
-        <Item BgColor={item.color}>
+        <Item BgColor={item.color} value={item.communityIdx} onClick={onCategoryClick}>
             <ItemLayout>
                 <ItemName>{item.communityName}</ItemName>
                 <img width={'24px'} src={item.icon} alt={item.communityName+" 아이콘"}/>
