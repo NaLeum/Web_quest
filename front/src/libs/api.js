@@ -26,3 +26,32 @@ export const getPostListAPI = async(communityIdx,page=0) => {
         console.errer('[FAIL] GET POST LIST',e);
     }
 }
+
+export const getPostDetailAPI = async(postIdx) => {
+    try{
+        const {data:{data}} = await client.get(`/community/post/${postIdx}`);
+        console.log('[SUCCESS] GET POST DETAIL',data);
+        return data
+    } catch(e) {
+        console.errer('[FAIL] GET POST DETAIL',e);
+    }
+}
+
+export const postLikeAPI = async(postIdx) => {
+    try{
+        const {data} = await client.post(`/like/post`,{'postIdx' : postIdx});
+        console.log('[SUCCESS] POST LIKE',data);
+        return data
+    } catch(e) {
+        console.errer('[FAIL] POST LIKE',e);
+    }
+}
+export const deleteLikeAPI = async(postIdx) => {
+    try{
+        const {data} = await client.delete(`/like/post/${postIdx}`);
+        console.log('[SUCCESS] DELETE LIKE',data);
+        return data
+    } catch(e) {
+        console.errer('[FAIL] DELETE LIKE',e);
+    }
+}

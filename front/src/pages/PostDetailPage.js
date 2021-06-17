@@ -1,9 +1,10 @@
+import PostDetailContainer from "../containers/postDetail/PostDetailContainer";
 
 
 
 const PostDetailPage = () => {
     return(
-        <div>dd</div>
+        <PostDetailContainer/>
     )
 }
 

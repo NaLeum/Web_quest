@@ -11,18 +11,6 @@ const HeaderRow = styled.header`
 const HeaderList = styled.ul`
     display: flex;    
 `;
-const HeaderItem = styled.li`
-    width: 100px;
-    height: 34px;
-    font-size: 24px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-bottom: ${(props)=> (props.isCommunitySchool === props.value) ? "3px solid purple" : "3px solid #ffffff"};
-    color: ${(props)=> (props.isCommunitySchool === props.value) ? "black" : "gray"};
-`;
 
 const MainHeader = ({isCommunitySchool,setIsCommunitySchool,setCommunityIdx}) => {
     return(
