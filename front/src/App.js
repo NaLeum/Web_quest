@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Layout from "./components/common/Layout";
+import GlobalStyles from "./libs/GlobalStyles";
+import CreatePostPage from "./pages/CreatePostPage";
+import EditPostPage from "./pages/EditPostPage";
+import MainPage from "./pages/MainPage";
+import PostDetailPage from "./pages/PostDetailPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles/>
+      <Layout>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/postDetail/:postIdx" component={PostDetailPage} />
+            <Route exact path="/createPost" component={CreatePostPage} />
+            <Route exact path="/editPost/:postIdx" component={EditPostPage} />
+            <Route path="/*">404 Not Found</Route>
+          </Switch>
+        </Router>
+      </Layout>
+    </>
   );
 }
 
