@@ -125,15 +125,13 @@ export const deleteCommentLikeAPI = async(commentIdx) => {
     }
 }
 
-// 댓글생성 400에러
 export const postCreateCommentAPI = async(content,postIdx,reply=0) => {
-    const formData = new FormData();
-    formData.append("postIdx",postIdx);
-    formData.append("content",content);
-    formData.append("reply",reply);
-
     try{
-        const {data} = await client.post(`/comment/post`,formData);
+        const {data} = await client.post(`/comment/post`,{
+            "postIdx": postIdx,
+            "content": content,
+            "reply": reply
+        });
         console.log('[SUCCESS] POST CREATE COMMENT ',data);
         return data
     } catch(e) {
