@@ -19,7 +19,8 @@ const CategoryContainer = ({isCommunitySchool,setCommunityIdx}) => {
     },[isCommunitySchool]);
     const onCategoryClick = (e) => {
         const targetValue = e.currentTarget.getAttribute('value');
-        setCommunityIdx(targetValue)
+        const targetName = e.currentTarget.getAttribute('name');
+        setCommunityIdx({"index":targetValue, "name":targetName});
     }
     return(
         boardList.length !== 0 &&

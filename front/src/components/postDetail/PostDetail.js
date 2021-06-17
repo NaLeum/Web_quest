@@ -1,11 +1,9 @@
 import { formatDistance } from 'date-fns';
 import ko from "date-fns/locale/ko";
 import styled from 'styled-components';
+import Wrapper from '../common/Wrapper';
 
-const PostDetailWrapper = styled.section`
-    padding: 10px;
-    padding-top: 30px;
-`;
+
 const PostDetailHeader = styled.header`
     display:flex;
     align-items: center;
@@ -55,7 +53,7 @@ const PostDetail = ({postDetailData,onLikeClick,isLike,likeCount}) => {
     console.log(postDetailData);
     const timeValue = formatDistance(new Date(postDetailData.createdAt), new Date(), { addSuffix: true,locale: ko })
     return(
-        <PostDetailWrapper>
+        <Wrapper>
             <PostDetailHeader>
                 <Nickname>{postDetailData.nickname}</Nickname>
                 {postDetailData.initial &&
@@ -71,7 +69,7 @@ const PostDetail = ({postDetailData,onLikeClick,isLike,likeCount}) => {
                 <PostLike onClick={onLikeClick} isLike={isLike}>좋아요 {likeCount}</PostLike>
                 <PostDetailFooterItem>댓글 {postDetailData.commentCount}</PostDetailFooterItem>
             </PostDetailFooter>
-        </PostDetailWrapper>
+        </Wrapper>
     )
 }
 

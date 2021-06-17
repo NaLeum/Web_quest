@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Item = styled.li`
@@ -23,7 +22,7 @@ const ItemName = styled.span`
 
 const CategoryItem = ({item,onCategoryClick}) => {
     return(
-        <Item BgColor={item.color} value={item.communityIdx} onClick={onCategoryClick}>
+        <Item BgColor={item.color} value={item.communityIdx} name={item.communityName} onClick={onCategoryClick}>
             <ItemLayout>
                 <ItemName>{item.communityName}</ItemName>
                 <img width={'24px'} src={item.icon} alt={item.communityName+" 아이콘"}/>

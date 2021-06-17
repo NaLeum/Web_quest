@@ -55,3 +55,17 @@ export const deleteLikeAPI = async(postIdx) => {
         console.errer('[FAIL] DELETE LIKE',e);
     }
 }
+
+export const postCreatePostAPI = async(form,communityIdx) => {
+    const formData = new FormData();
+    formData.append("title",form.title);
+    formData.append("content",form.content);
+
+    try{
+        const {data} = await client.post(`/community/post/${communityIdx}`,formData);
+        console.log('[SUCCESS] POST CREATE POST ',data);
+        return data
+    } catch(e) {
+        console.errer('[FAIL] POST CREATE POST',e);
+    }
+}

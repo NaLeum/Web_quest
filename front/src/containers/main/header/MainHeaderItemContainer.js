@@ -5,9 +5,9 @@ const MainHeaderItemContainer = ({isCommunitySchool,value,setIsCommunitySchool,s
         // 수정 필요
         setIsCommunitySchool(value);
         if(value===0){
-            setCommunityIdx(2)            
+            setCommunityIdx({"index":2, "name":"자유"})            
         }else{
-            setCommunityIdx(3984)
+            setCommunityIdx({"index":3984, "name":"자유"})
         }
     }
     return(

@@ -6,7 +6,7 @@ import PostListContainer from "../containers/post/PostListContainer";
 
 const MainPage = () => {
     const [isCommunitySchool, setIsCommunitySchool] = useState(0);
-    const [communityIdx, setCommunityIdx] = useState(2);
+    const [communityIdx, setCommunityIdx] = useState({"index":2,"name":"자유"});
     return(
         <>
             <MainHeader 

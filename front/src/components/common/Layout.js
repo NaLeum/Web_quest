@@ -14,7 +14,7 @@ const TotalInner = styled.section`
     min-height: 100vh;
     margin: 0 auto;
 `
-const Wapper = ({children}) => {
+const Layout = ({children}) => {
     return(
         <TotalWrapper>
             <TotalInner>
@@ -24,4 +24,4 @@ const Wapper = ({children}) => {
     )
 }
 
-export default Wapper;
+export default Layout;

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { getPostListAPI } from "../../libs/api";
 import PostList from "../../components/post/PostList"
+import PostListHeader from "../../components/post/PostListHeader";
 
 const PostListContainer = ({communityIdx}) => {
     const [postList,setPostList] = useState([])
     useEffect(()=>{(
         async()=>{
             try{
-                const result = await getPostListAPI(communityIdx);
+                const result = await getPostListAPI(communityIdx.index);
                 setPostList(result.data)
             }catch(e){
                 console.error("[FAIL] GET POST LIST",e)
@@ -16,10 +17,19 @@ const PostListContainer = ({communityIdx}) => {
         }
     )();
     },[communityIdx]);
-    
+
+    const onCreatePostClick = () => {
+        localStorage.setItem("boardData",JSON.stringify({
+            "communityIdx":communityIdx.index,
+            "communityName": communityIdx.name
+        }));
+    }
+
     return (
-        postList.length !==0 &&
-        <PostList postList={postList}/>
+        <>
+            <PostListHeader onCreatePostClick={onCreatePostClick}/>
+            {postList.length !==0 && <PostList postList={postList}/>}
+        </>
     )
 }
 
