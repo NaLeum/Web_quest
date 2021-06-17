@@ -60,6 +60,9 @@ export const postCreatePostAPI = async(form,communityIdx) => {
     const formData = new FormData();
     formData.append("title",form.title);
     formData.append("content",form.content);
+    formData.append("images",form.images);
+    console.log(form.images)
+    
 
     try{
         const {data} = await client.post(`/community/post/${communityIdx}`,formData);

@@ -55,6 +55,7 @@ const CreatePost = ({communityData,onInputChange,onSubmitClick,formData}) => {
                 <main>
                     <TitleInput value={formData?.title} type="text" name="title" placeholder="제목을 적어주세요" onChange={onInputChange} required/>
                     <ContentInput value={formData?.content} type="text" name="content" placeholder="내용을 적어주세요" onChange={onInputChange} required/>
+                    <input type="file" multiple name="images" onChange={onInputChange}/>
                 </main>
             </form>
         </Wrapper>

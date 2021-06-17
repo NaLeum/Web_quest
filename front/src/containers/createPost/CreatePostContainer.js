@@ -8,6 +8,7 @@ const CreatePostContainer = ({history}) => {
     const [formData, setFormData] = useState({
         title:"",
         content:"",
+        images:[],
     })
     useEffect(()=>{
         const boardData = localStorage.getItem("boardData");
@@ -16,8 +17,13 @@ const CreatePostContainer = ({history}) => {
     },[])
     
     const onInputChange = (e) => {
-        const {value,name}=e.currentTarget
-        setFormData({...formData,[name]:value})
+        const {value,name}=e.currentTarget;
+        if(name==="images"){
+            setFormData({...formData,[name]:e.currentTarget.files})
+        }else{
+            setFormData({...formData,[name]:value});
+        }
+        console.log(formData)
     }
 
     const onSubmitClick = async(e) => {
