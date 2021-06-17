@@ -8,6 +8,7 @@ const PostDetailHeader = styled.header`
     display:flex;
     align-items: center;
     margin-bottom: 15px;
+    justify-content: space-between;
 `;
 const Nickname = styled.span`
     color: #9E9A95;
@@ -49,17 +50,25 @@ const PostLike = styled.span`
     cursor: pointer;
     color : ${props => props.isLike&& "#b63ae8"};
 `;
-const PostDetail = ({postDetailData,onLikeClick,isLike,likeCount}) => {
+const Setting = styled.span`
+    cursor: pointer;
+`;
+const PostDetail = ({postDetailData,onLikeClick,isLike,likeCount,onClickModal}) => {
     console.log(postDetailData);
     const timeValue = formatDistance(new Date(postDetailData.createdAt), new Date(), { addSuffix: true,locale: ko })
     return(
         <Wrapper>
             <PostDetailHeader>
-                <Nickname>{postDetailData.nickname}</Nickname>
-                {postDetailData.initial &&
-                        <Initial>{postDetailData.initial}대</Initial>
-                }
-                <Time>{timeValue}</Time>
+                <div>
+                    <Nickname>{postDetailData.nickname}</Nickname>
+                    {postDetailData.initial &&
+                            <Initial>{postDetailData.initial}대</Initial>
+                    }
+                    <Time>{timeValue}</Time>
+                </div>
+                <div>
+                    <Setting onClick={onClickModal}>설정</Setting>
+                </div>
             </PostDetailHeader>
             <main>
                 <PostDetailTitle>{postDetailData.title}</PostDetailTitle>

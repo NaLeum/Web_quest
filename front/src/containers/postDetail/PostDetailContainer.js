@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { withRouter } from "react-router";
+import Modal from "../../components/postDetail/modal/Modal";
 import PostDetail from "../../components/postDetail/PostDetail"
-import { getPostDetailAPI, postLikeAPI,deleteLikeAPI } from "../../libs/api";
+import { getPostDetailAPI, postLikeAPI,deleteLikeAPI, deletePostAPI } from "../../libs/api";
 
-const PostDetailContainer = ({match}) => {
+const PostDetailContainer = ({match,history}) => {
     const [postDetailData, setPostDetailData] = useState(null);
     const [isLike,setIsLike] = useState(false);
     const [likeCount, setLikeCount] = useState(0);
+    const [modalVisible,setModalVisible] = useState(false);
     useEffect(()=>{(
         async()=>{
             try{
@@ -36,8 +38,23 @@ const PostDetailContainer = ({match}) => {
         // console.log(result)
     };
 
+    const onDeletPostClick = () => {
+        deletePostAPI(match.params.postIdx);
+        history.push("/")
+    }
+
+    const onClickModal = () => {
+        setModalVisible(!modalVisible);
+    }
+    const onEditPostClick= () => {
+        history.push(`/editpost/${match.params.postIdx}`)
+    }
     return(
-        postDetailData && <PostDetail postDetailData={postDetailData} onLikeClick={onLikeClick} isLike={isLike} likeCount={likeCount}/>
+        postDetailData &&
+        <> 
+            <PostDetail postDetailData={postDetailData} onLikeClick={onLikeClick} isLike={isLike} likeCount={likeCount} onClickModal={onClickModal}/>
+            {modalVisible && <Modal modalVisible={modalVisible} onClickModal={onClickModal} onDeletPostClick={onDeletPostClick} onEditPostClick={onEditPostClick}/>}
+        </>
     )
 }
 
