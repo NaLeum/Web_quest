@@ -69,3 +69,27 @@ export const postCreatePostAPI = async(form,communityIdx) => {
         console.errer('[FAIL] POST CREATE POST',e);
     }
 }
+
+export const deletePostAPI = async(postIdx) => {
+    try{
+        const {data} = await client.delete(`/community/post/${postIdx}`);
+        console.log('[SUCCESS] DELETE POST',data);
+        return data
+    } catch(e) {
+        console.errer('[FAIL] DELETE POST',e);
+    }
+}
+
+export const putEditPostAPI = async(form,postIdx) => {
+    const formData = new FormData();
+    formData.append("title",form.title);
+    formData.append("content",form.content);
+
+    try{
+        const {data} = await client.put(`/community/post/${postIdx}`,formData);
+        console.log('[SUCCESS] PUT EDIT POST ',data);
+        return data
+    } catch(e) {
+        console.errer('[FAIL] PUT EDIT POST',e);
+    }
+}

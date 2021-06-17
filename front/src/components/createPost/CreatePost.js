@@ -42,7 +42,7 @@ const ContentInput = styled(TitleInput)`
     font-size: 16px;
 `;
 
-const CreatePost = ({communityData,onInputChange,onSubmitClick}) => {
+const CreatePost = ({communityData,onInputChange,onSubmitClick,formData}) => {
     return(
         <Wrapper>
             <form onSubmit={onSubmitClick}>
@@ -53,8 +53,8 @@ const CreatePost = ({communityData,onInputChange,onSubmitClick}) => {
                     <SubmitButton onSubmit={onSubmitClick}>등록</SubmitButton>
                 </CreatePostHeader>
                 <main>
-                    <TitleInput type="text" name="title" placeholder="제목을 적어주세요" onChange={onInputChange} required/>
-                    <ContentInput type="text" name="content" placeholder="내용을 적어주세요" onChange={onInputChange} required/>
+                    <TitleInput value={formData.title} type="text" name="title" placeholder="제목을 적어주세요" onChange={onInputChange} required/>
+                    <ContentInput value={formData.content} type="text" name="content" placeholder="내용을 적어주세요" onChange={onInputChange} required/>
                 </main>
             </form>
         </Wrapper>
