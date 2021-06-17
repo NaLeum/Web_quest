@@ -4,7 +4,11 @@ import { formatDistance } from 'date-fns';
 
 const CommentWrapper = styled.li`
     border-bottom: 1px solid #dbdee0;
+    padding-top: 10px;
     padding-bottom: 10px;
+    &:first-child{
+        padding-top:0;
+    }
 `;
 
 const CommentHeader = styled.header`
