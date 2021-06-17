@@ -24,11 +24,11 @@ const CommetButton = styled.button`
     border-radius: 8px;
 `;
 
-const CommentInput = ({onCommentChange,commentContent,onSubmitClick}) => {
+const CommentInput = ({onCommentChange,commentContent,onSubmitClick,text}) => {
     return(
         <CommentWrapper>
             <CommentForm onSubmit={onSubmitClick}>
-                <Input type="text" placeholder={"댓글을 입력해주세요"} onChange={onCommentChange} value={commentContent} required />
+                <Input type="text" placeholder={text||"댓글을 입력해주세요"} onChange={onCommentChange} value={commentContent} required />
                 <CommetButton onSubmit={onSubmitClick}>등록</CommetButton>
             </CommentForm>
         </CommentWrapper>

@@ -1,14 +1,28 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import ko from "date-fns/locale/ko";
 import { formatDistance } from 'date-fns';
+import CommentInputContainer from "../../../containers/postDetail/comment/CommentInputContainer";
+import CommentList from "./CommentList";
 
 const CommentWrapper = styled.li`
     border-bottom: 1px solid #dbdee0;
-    padding-top: 10px;
+    padding-top: ${props => props.reply?"0px":"10px"};
     padding-bottom: 10px;
     &:first-child{
         padding-top:0;
+        margin-top:-10px;
     }
+    &:last-child{
+        border-bottom: 0;
+    }
+    ${props => props.reply&&
+    css`
+        &:first-child{
+            padding-top:0;
+            margin-top:-20px;
+        } 
+        padding-top:10px;
+    `}
 `;
 
 const CommentHeader = styled.header`
@@ -40,6 +54,7 @@ const CommentFooter = styled.footer`
     justify-content: space-between;
     color: #9E9A95;
     font-size: 14px;
+    margin-bottom:10px;
 `;
 const FooterItem = styled.span`
     margin-right: 5px;
@@ -52,11 +67,20 @@ const CommentLike = styled(FooterItem)`
 const DeleteButton = styled.span`
     cursor:pointer;
 `;
-const CommentItem = ({comment,onCommentLikeClick,commentLikeCount,commentIsLike,onDeleteComment}) => {
+const CommentItem = ({
+    comment,
+    onCommentLikeClick,
+    commentLikeCount,commentIsLike,
+    onDeleteComment,
+    onReplyClick,
+    inputVisible,
+    setCommentData,
+    setCommentCount,
+    commentCount,
+    reply}) => {
     const timeValue = formatDistance(new Date(comment.createdAt), new Date(), { addSuffix: true,locale: ko })
-
     return(
-        <CommentWrapper>
+        <CommentWrapper reply={reply}>
             <CommentHeader>
                 <div>
                     <Nickname>{comment.nickname}</Nickname>
@@ -74,11 +98,32 @@ const CommentItem = ({comment,onCommentLikeClick,commentLikeCount,commentIsLike,
                 {comment.content}
             </CommentMain>
             <CommentFooter>
-                <FooterItem>{timeValue}</FooterItem>
+                <div>
+                    <FooterItem>{timeValue}</FooterItem>
+                    {!reply && <FooterItem onClick={onReplyClick}>답글달기</FooterItem>
+}
+                </div>
                 <CommentLike onClick={onCommentLikeClick} commentIsLike={commentIsLike} >
                     좋아요 {commentLikeCount}
                 </CommentLike>
             </CommentFooter>
+            {inputVisible &&
+                <CommentInputContainer 
+                reply={1} 
+                text={"대댓글을 남겨주세요"}
+                setCommentData={setCommentData}
+                setCommentCount={setCommentCount}
+                commentCount={commentCount}
+                commentIdx={comment.commentIdx}
+                userIdx={comment.userIdx}
+            /> 
+            }
+            {(Array.isArray(comment.reply)&&comment.reply.length !==0) &&
+                <CommentList 
+                    commentData={comment.reply}
+                    reply={true} 
+                />
+            }
         </CommentWrapper>
     )
 }

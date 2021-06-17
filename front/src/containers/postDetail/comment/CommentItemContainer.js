@@ -2,10 +2,10 @@ import { useState } from "react";
 import CommentItem from "../../../components/postDetail/comment/CommentItem";
 import {deleteCommentAPI, deleteCommentLikeAPI,getCommentListAPI,postCommentLikeAPI} from "../../../libs/api"
 
-const CommentItemContainer = ({comment,postIdx,setCommentData,setCommentCount,commentCount}) => {
+const CommentItemContainer = ({comment,postIdx,setCommentData,setCommentCount,commentCount,reply}) => {
     const [commentLikeCount,setCommentLikeCount] = useState(comment.likeCount);
     const [commentIsLike, setCommentIsLike] = useState(comment.isLike);
-
+    const [inputVisible, setInputVisible] = useState(false);
 
     const onCommentLikeClick = () => {
         if(commentIsLike){
@@ -36,14 +36,22 @@ const CommentItemContainer = ({comment,postIdx,setCommentData,setCommentCount,co
             console.log(e)
         }
     }
-
+    const onReplyClick = () => {
+        setInputVisible(!inputVisible);
+    }
     return (
         <CommentItem
             comment={comment} 
             commentLikeCount={commentLikeCount} 
             commentIsLike={commentIsLike}
+            inputVisible={inputVisible}
+            setCommentData={setCommentData}
+            setCommentCount={setCommentCount}
+            commentCount={commentCount}
             onCommentLikeClick={onCommentLikeClick}
             onDeleteComment={onDeleteComment}
+            onReplyClick={onReplyClick}
+            reply={reply}
         />
     )
 }

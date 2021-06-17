@@ -3,7 +3,7 @@ import Wrapper from "../../common/Wrapper";
 
 
 
-const CommentList = ({commentData,postIdx,setCommentData,setCommentCount,commentCount}) => {
+const CommentList = ({commentData,postIdx,setCommentData,setCommentCount,commentCount,reply}) => {
     return(
         <Wrapper>
             <ul>
@@ -15,6 +15,7 @@ const CommentList = ({commentData,postIdx,setCommentData,setCommentCount,comment
                         setCommentData={setCommentData}
                         setCommentCount={setCommentCount}
                         commentCount={commentCount}
+                        reply={reply}
                     />
                 ))}
             </ul>
