@@ -16,7 +16,7 @@ const PostList = ({postList}) => {
             <PostListHeader>NEW</PostListHeader>
             <ul>
                 {postList.map((post)=>(
-                    <PostItem post={post}/>
+                    <PostItem key={post.postIdx} post={post}/>
                 ))}
             </ul>
         </PostListWrapper>
