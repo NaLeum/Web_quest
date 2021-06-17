@@ -2,7 +2,7 @@ import { useState } from "react";
 import MainHeader from "../components/main/header/MainHeader";
 import MainWrapper from "../components/main/MainWrapper";
 import CategoryContainer from "../containers/common/CategoryContainer";
-import PostListContainer from "../containers/community/post/PostListContainer";
+import PostListContainer from "../containers/post/PostListContainer";
 
 const MainPage = () => {
     const [isCommunitySchool, setIsCommunitySchool] = useState(0);

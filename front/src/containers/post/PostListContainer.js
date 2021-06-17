@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getPostListAPI } from "../../../libs/api";
-import PostList from "../../../components/post/PostList"
+import { getPostListAPI } from "../../libs/api";
+import PostList from "../../components/post/PostList"
 
 const PostListContainer = ({communityIdx}) => {
     const [postList,setPostList] = useState([])
