@@ -48,7 +48,11 @@ const CommentLike = styled(FooterItem)`
     cursor: pointer;
     color : ${props => props.commentIsLike&& "#b63ae8"};
 `;
-const CommentItem = ({comment,onCommentLikeClick,commentLikeCount,commentIsLike}) => {
+
+const DeleteButton = styled.span`
+    cursor:pointer;
+`;
+const CommentItem = ({comment,onCommentLikeClick,commentLikeCount,commentIsLike,onDeleteComment}) => {
     const timeValue = formatDistance(new Date(comment.createdAt), new Date(), { addSuffix: true,locale: ko })
 
     return(
@@ -61,7 +65,9 @@ const CommentItem = ({comment,onCommentLikeClick,commentLikeCount,commentIsLike}
                     }
                 </div>
                 <div>
-                    <span>삭제</span>
+                {comment.isMine &&
+                    <DeleteButton onClick={onDeleteComment}>삭제</DeleteButton>
+                }
                 </div>
             </CommentHeader>
             <CommentMain>

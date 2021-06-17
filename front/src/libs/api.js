@@ -138,3 +138,13 @@ export const postCreateCommentAPI = async(content,postIdx,reply=0) => {
         console.error('[FAIL] POST CREATE COMMENT',e);
     }
 }
+
+export const deleteCommentAPI = async(commentIdx,postIdx) => {
+    try{
+        const {data} = await client.delete(`/comment/post/${postIdx}/${commentIdx}`);
+        console.log('[SUCCESS] DELETE COMMENT',data);
+        return data
+    } catch(e) {
+        console.error('[FAIL] DELETE COMMENT',e);
+    }
+}

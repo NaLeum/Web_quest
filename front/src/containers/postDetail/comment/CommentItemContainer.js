@@ -1,8 +1,8 @@
 import { useState } from "react";
 import CommentItem from "../../../components/postDetail/comment/CommentItem";
-import {deleteCommentLikeAPI,postCommentLikeAPI} from "../../../libs/api"
+import {deleteCommentAPI, deleteCommentLikeAPI,getCommentListAPI,postCommentLikeAPI} from "../../../libs/api"
 
-const CommentItemContainer = ({comment,postIdx}) => {
+const CommentItemContainer = ({comment,postIdx,setCommentData,setCommentCount,commentCount}) => {
     const [commentLikeCount,setCommentLikeCount] = useState(comment.likeCount);
     const [commentIsLike, setCommentIsLike] = useState(comment.isLike);
 
@@ -19,12 +19,31 @@ const CommentItemContainer = ({comment,postIdx}) => {
         }
         // console.log(result)
     };
+
+    const onDeleteComment = async() => {
+        try {
+            const result = await deleteCommentAPI(comment.commentIdx,postIdx,0);
+            setCommentCount(commentCount-1);
+            if(result?.success){
+                try{
+                    const commentResult = await getCommentListAPI(postIdx);
+                    setCommentData(commentResult.data);
+                }catch(e){
+                    console.log(e)
+                }
+            }                
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <CommentItem
             comment={comment} 
             commentLikeCount={commentLikeCount} 
             commentIsLike={commentIsLike}
             onCommentLikeClick={onCommentLikeClick}
+            onDeleteComment={onDeleteComment}
         />
     )
 }

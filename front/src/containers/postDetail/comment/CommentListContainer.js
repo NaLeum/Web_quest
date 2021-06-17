@@ -6,7 +6,7 @@ import CommentInputContainer from "./CommentInputContainer";
 
 
 
-const CommentListContainer = ({match}) => {
+const CommentListContainer = ({match,setCommentCount,commentCount}) => {
     const [commentData, setCommentData] = useState([]);
 
     useEffect(()=>{(
@@ -25,10 +25,20 @@ const CommentListContainer = ({match}) => {
 
     return(
         <>
-            <CommentInputContainer  setCommentData={setCommentData}/>
+            <CommentInputContainer  
+                setCommentData={setCommentData}
+                setCommentCount={setCommentCount}
+                commentCount={commentCount}
+            />
             {commentData.length !== 0 &&
-                    <CommentList commentData={commentData} postIdx={match.params.postIdx} />
-                }
+                    <CommentList 
+                        commentData={commentData} 
+                        postIdx={match.params.postIdx} 
+                        setCommentData={setCommentData}
+                        setCommentCount={setCommentCount}
+                        commentCount={commentCount}
+                    />
+            }
         </>
     )
 }

@@ -53,7 +53,7 @@ const PostLike = styled.span`
 const Setting = styled.span`
     cursor: pointer;
 `;
-const PostDetail = ({postDetailData,onLikeClick,isLike,likeCount,onClickModal}) => {
+const PostDetail = ({postDetailData,onLikeClick,isLike,likeCount,onClickModal,commentCount}) => {
     console.log(postDetailData);
     const timeValue = formatDistance(new Date(postDetailData.createdAt), new Date(), { addSuffix: true,locale: ko })
     return(
@@ -74,7 +74,7 @@ const PostDetail = ({postDetailData,onLikeClick,isLike,likeCount,onClickModal}) 
             </main>
             <PostDetailFooter>
                 <PostLike onClick={onLikeClick} isLike={isLike}>좋아요 {likeCount}</PostLike>
-                <PostDetailFooterItem>댓글 {postDetailData.commentCount}</PostDetailFooterItem>
+                <PostDetailFooterItem>댓글 {commentCount}</PostDetailFooterItem>
             </PostDetailFooter>
         </Wrapper>
     )

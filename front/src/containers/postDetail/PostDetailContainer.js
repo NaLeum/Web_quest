@@ -4,7 +4,7 @@ import Modal from "../../components/postDetail/modal/Modal";
 import PostDetail from "../../components/postDetail/PostDetail"
 import { getPostDetailAPI, postLikeAPI,deleteLikeAPI, deletePostAPI } from "../../libs/api";
 
-const PostDetailContainer = ({match,history}) => {
+const PostDetailContainer = ({match,history,setCommentCount,commentCount}) => {
     const [postDetailData, setPostDetailData] = useState(null);
     const [isLike,setIsLike] = useState(false);
     const [likeCount, setLikeCount] = useState(0);
@@ -16,6 +16,7 @@ const PostDetailContainer = ({match,history}) => {
                 setPostDetailData(postResult);
                 setIsLike(postResult.isLike);
                 setLikeCount(postResult.likeCount);
+                setCommentCount(postResult.commentCount);
                 console.log(postResult)
             }catch(e){
                 console.error("[FAIL] GET POST DETAIL",e)
@@ -52,7 +53,14 @@ const PostDetailContainer = ({match,history}) => {
     return(
         postDetailData &&
         <> 
-            <PostDetail postDetailData={postDetailData} onLikeClick={onLikeClick} isLike={isLike} likeCount={likeCount} onClickModal={onClickModal}/>
+            <PostDetail 
+                postDetailData={postDetailData} 
+                onLikeClick={onLikeClick} 
+                isLike={isLike} 
+                likeCount={likeCount} 
+                onClickModal={onClickModal}
+                commentCount={commentCount}
+            />
             {modalVisible && <Modal modalVisible={modalVisible} onClickModal={onClickModal} onDeletPostClick={onDeletPostClick} onEditPostClick={onEditPostClick}/>}
         </>
     )

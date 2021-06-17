@@ -3,13 +3,19 @@ import Wrapper from "../../common/Wrapper";
 
 
 
-const CommentList = ({commentData,postIdx}) => {
-    console.log(commentData)
+const CommentList = ({commentData,postIdx,setCommentData,setCommentCount,commentCount}) => {
     return(
         <Wrapper>
             <ul>
                 {commentData.map((comment,idx)=>(
-                    <CommentItemContainer key={idx} comment={comment} postIdx={postIdx} />
+                    <CommentItemContainer 
+                        key={idx} 
+                        comment={comment} 
+                        postIdx={postIdx} 
+                        setCommentData={setCommentData}
+                        setCommentCount={setCommentCount}
+                        commentCount={commentCount}
+                    />
                 ))}
             </ul>
         </Wrapper>
