@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MainHeaderItemContainer from "../../../containers/main/header/MainHeaderItemContainer";
+import MainHeaderItemContainer from "../../../containers/main/MainHeaderItemContainer";
 
 const HeaderRow = styled.header`
     width: 414px;

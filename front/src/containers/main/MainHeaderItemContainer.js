@@ -1,4 +1,4 @@
-import MainHeaderItem from "../../../components/main/header/MainHeaderItem"
+import MainHeaderItem from "../../components/main/header/MainHeaderItem";
 
 const MainHeaderItemContainer = ({isCommunitySchool,value,setIsCommunitySchool,setCommunityIdx,children}) => {
     const onHeaderClick = (e) => {
@@ -11,7 +11,7 @@ const MainHeaderItemContainer = ({isCommunitySchool,value,setIsCommunitySchool,s
         }
     }
     return(
-        <MainHeaderItem 
+        <MainHeaderItem
             isCommunitySchool={isCommunitySchool}
             value={value}
             onHeaderClick={onHeaderClick}
