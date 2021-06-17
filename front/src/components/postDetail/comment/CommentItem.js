@@ -18,9 +18,12 @@ const CommentWrapper = styled.li`
     ${props => props.reply&&
     css`
         &:first-child{
-            padding-top:0;
+            padding-top:10px;
             margin-top:-20px;
         } 
+        &:last-child{
+            padding-bottom:0;
+        }
         padding-top:10px;
     `}
 `;
