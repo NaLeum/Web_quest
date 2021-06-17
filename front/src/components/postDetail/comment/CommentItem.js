@@ -40,7 +40,11 @@ const CommentFooter = styled.footer`
 const FooterItem = styled.span`
     margin-right: 5px;
 `;
-const CommentItem = ({comment}) => {
+const CommentLike = styled(FooterItem)`
+    cursor: pointer;
+    color : ${props => props.commentIsLike&& "#b63ae8"};
+`;
+const CommentItem = ({comment,onCommentLikeClick,commentLikeCount,commentIsLike}) => {
     const timeValue = formatDistance(new Date(comment.createdAt), new Date(), { addSuffix: true,locale: ko })
 
     return(
@@ -49,7 +53,7 @@ const CommentItem = ({comment}) => {
                 <div>
                     <Nickname>{comment.nickname}</Nickname>
                     {comment.initial &&
-                            <Initial>{comment.initial}대</Initial>
+                        <Initial>{comment.initial}대</Initial>
                     }
                 </div>
                 <div>
@@ -61,7 +65,9 @@ const CommentItem = ({comment}) => {
             </CommentMain>
             <CommentFooter>
                 <FooterItem>{timeValue}</FooterItem>
-                <FooterItem>좋아요 {comment.likeCount}</FooterItem>
+                <CommentLike onClick={onCommentLikeClick} commentIsLike={commentIsLike} >
+                    좋아요 {commentLikeCount}
+                </CommentLike>
             </CommentFooter>
         </CommentWrapper>
     )

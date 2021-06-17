@@ -14,7 +14,7 @@ export const getBoredListAPI = async(isCommunitySchool) => {
         console.log('[SUCCESS] GET BORED LIST',data);
         return data
     } catch(e) {
-        console.errer('[FAIL] GET BORED LIST',e);
+        console.error('[FAIL] GET BORED LIST',e);
     }
 }
 export const getPostListAPI = async(communityIdx,page=0) => {
@@ -23,7 +23,7 @@ export const getPostListAPI = async(communityIdx,page=0) => {
         console.log('[SUCCESS] GET POST LIST',data);
         return data
     } catch(e) {
-        console.errer('[FAIL] GET POST LIST',e);
+        console.error('[FAIL] GET POST LIST',e);
     }
 }
 
@@ -33,7 +33,7 @@ export const getPostDetailAPI = async(postIdx) => {
         console.log('[SUCCESS] GET POST DETAIL',data);
         return data
     } catch(e) {
-        console.errer('[FAIL] GET POST DETAIL',e);
+        console.error('[FAIL] GET POST DETAIL',e);
     }
 }
 
@@ -43,7 +43,7 @@ export const postLikeAPI = async(postIdx) => {
         console.log('[SUCCESS] POST LIKE',data);
         return data
     } catch(e) {
-        console.errer('[FAIL] POST LIKE',e);
+        console.error('[FAIL] POST LIKE',e);
     }
 }
 export const deleteLikeAPI = async(postIdx) => {
@@ -52,7 +52,7 @@ export const deleteLikeAPI = async(postIdx) => {
         console.log('[SUCCESS] DELETE LIKE',data);
         return data
     } catch(e) {
-        console.errer('[FAIL] DELETE LIKE',e);
+        console.error('[FAIL] DELETE LIKE',e);
     }
 }
 
@@ -66,7 +66,7 @@ export const postCreatePostAPI = async(form,communityIdx) => {
         console.log('[SUCCESS] POST CREATE POST ',data);
         return data
     } catch(e) {
-        console.errer('[FAIL] POST CREATE POST',e);
+        console.error('[FAIL] POST CREATE POST',e);
     }
 }
 
@@ -76,7 +76,7 @@ export const deletePostAPI = async(postIdx) => {
         console.log('[SUCCESS] DELETE POST',data);
         return data
     } catch(e) {
-        console.errer('[FAIL] DELETE POST',e);
+        console.error('[FAIL] DELETE POST',e);
     }
 }
 
@@ -90,7 +90,7 @@ export const putEditPostAPI = async(form,postIdx) => {
         console.log('[SUCCESS] PUT EDIT POST ',data);
         return data
     } catch(e) {
-        console.errer('[FAIL] PUT EDIT POST',e);
+        console.error('[FAIL] PUT EDIT POST',e);
     }
 }
 
@@ -100,6 +100,27 @@ export const getCommentListAPI = async(postIdx,page=0) => {
         console.log('[SUCCESS] GET COMMENT LIST',data);
         return data
     } catch(e) {
-        console.errer('[FAIL] GET COMMENT LIST',e);
+        console.error('[FAIL] GET COMMENT LIST',e);
+    }
+}
+
+export const postCommentLikeAPI = async(commentIdx,postIdx) => {
+    try{
+        const {data} = await client.post(`/comment/postLike`,{
+            'postIdx' : postIdx,'commentIdx':commentIdx
+        });
+        console.log('[SUCCESS] POST COMMENT LIKE',data);
+        return data
+    } catch(e) {
+        console.error('[FAIL] POST COMMENT LIKE',e);
+    }
+}
+export const deleteCommentLikeAPI = async(commentIdx) => {
+    try{
+        const {data} = await client.delete(`/comment/postLike/${commentIdx}`);
+        console.log('[SUCCESS] DELETE COMMENT LIKE',data);
+        return data
+    } catch(e) {
+        console.error('[FAIL] DELETE COMMENT LIKE',e);
     }
 }

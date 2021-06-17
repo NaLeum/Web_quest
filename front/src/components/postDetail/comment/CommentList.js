@@ -1,15 +1,15 @@
+import CommentItemContainer from "../../../containers/postDetail/CommentItemContainer";
 import Wrapper from "../../common/Wrapper";
-import CommentItem from "./CommentItem";
 
 
 
-const CommentList = ({commentData}) => {
+const CommentList = ({commentData,postIdx}) => {
     console.log(commentData)
     return(
         <Wrapper>
             <ul>
                 {commentData.map((comment,idx)=>(
-                    <CommentItem key={idx} comment={comment}/>
+                    <CommentItemContainer key={idx} comment={comment} postIdx={postIdx} />
                 ))}
             </ul>
         </Wrapper>
