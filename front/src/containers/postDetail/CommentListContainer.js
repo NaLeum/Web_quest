@@ -23,6 +23,7 @@ const CommentListContainer = ({match}) => {
     )();
     },[match.params.postIdx]);
     return(
+        commentData.length !== 0 &&
         <CommentList commentData={commentData} />
     )
 }
