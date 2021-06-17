@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ko from "date-fns/locale/ko";
 import { formatDistance} from 'date-fns'
+import { Link } from "react-router-dom";
 
 const PostItemWrapper = styled.li`
     border-bottom: 1px solid #dbdee0;
@@ -46,31 +47,37 @@ const PostFooter = styled.footer`
 const FooterItem = styled.span`
     margin-left: 5px;
 `;
+const SLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+ `;
 
 const PostItem = ({post}) => {
     const timeValue = formatDistance(new Date(post.createdAt), new Date(), { addSuffix: true,locale: ko })
     return(
-        <PostItemWrapper value={post.postIdx}>
-            <PostHeader>
-                <Nickname>{post.nickname}</Nickname>
-                {post.initial &&
-                    <Initial>{post.initial}대</Initial>
-                }
-            </PostHeader>
-            <main>
-                <PostTitle>{post.title}</PostTitle>
-                <PostContent>{post.content}</PostContent>
-            </main>
-            <PostFooter>
-                <div>
-                    <span>{post.communityName}</span>
-                    <FooterItem>{timeValue}</FooterItem>
-                </div>
-                <div>
-                    <FooterItem>좋아요 {post.likeCount}</FooterItem>
-                    <FooterItem>댓글 {post.commentCount}</FooterItem>
-                </div>
-            </PostFooter>
+        <PostItemWrapper>
+            <SLink to={`/postDetail/${post.postIdx}`}>
+                <PostHeader>
+                    <Nickname>{post.nickname}</Nickname>
+                    {post.initial &&
+                        <Initial>{post.initial}대</Initial>
+                    }
+                </PostHeader>
+                <main>
+                    <PostTitle>{post.title}</PostTitle>
+                    <PostContent>{post.content}</PostContent>
+                </main>
+                <PostFooter>
+                    <div>
+                        <span>{post.communityName}</span>
+                        <FooterItem>{timeValue}</FooterItem>
+                    </div>
+                    <div>
+                        <FooterItem>좋아요 {post.likeCount}</FooterItem>
+                        <FooterItem>댓글 {post.commentCount}</FooterItem>
+                    </div>
+                </PostFooter>
+            </SLink>
         </PostItemWrapper>
     )
 }
