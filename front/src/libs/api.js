@@ -93,3 +93,13 @@ export const putEditPostAPI = async(form,postIdx) => {
         console.errer('[FAIL] PUT EDIT POST',e);
     }
 }
+
+export const getCommentListAPI = async(postIdx,page=0) => {
+    try{
+        const {data:{data}} = await client.get(`/comment/post/${postIdx}/${page}`);
+        console.log('[SUCCESS] GET COMMENT LIST',data);
+        return data
+    } catch(e) {
+        console.errer('[FAIL] GET COMMENT LIST',e);
+    }
+}

@@ -8,12 +8,13 @@ const EditPostContainer = ({history,match}) => {
     const [formData, setFormData] = useState({
         title:"",
         content:"",
-    })
+    });
+
     useEffect(()=>{
         const boardData = localStorage.getItem("boardData");
         const parseBoardData = JSON.parse(boardData);
         setCommunityData(parseBoardData)
-    },[])
+    },[]);
 
     useEffect(()=>{(
         async()=>{
@@ -37,7 +38,6 @@ const EditPostContainer = ({history,match}) => {
     const onInputChange = (e) => {
         const {value,name}=e.currentTarget
         setFormData({...formData,[name]:value})
-        console.log(formData)
     }
 
     const onSubmitClick = async(e) => {
@@ -49,6 +49,8 @@ const EditPostContainer = ({history,match}) => {
             console.log(e)
         }
     }
+
+
     return(
         communityData && 
         <CreatePost formData={formData} communityData={communityData} onInputChange={onInputChange} onSubmitClick={onSubmitClick}/>

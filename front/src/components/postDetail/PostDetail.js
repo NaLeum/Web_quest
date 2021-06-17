@@ -61,13 +61,11 @@ const PostDetail = ({postDetailData,onLikeClick,isLike,likeCount,onClickModal}) 
             <PostDetailHeader>
                 <div>
                     <Nickname>{postDetailData.nickname}</Nickname>
-                    {postDetailData.initial &&
-                            <Initial>{postDetailData.initial}대</Initial>
-                    }
+                    {postDetailData.initial && <Initial>{postDetailData.initial}대</Initial> }
                     <Time>{timeValue}</Time>
                 </div>
                 <div>
-                    <Setting onClick={onClickModal}>설정</Setting>
+                    {postDetailData.isMine && <Setting onClick={onClickModal}>설정</Setting> }
                 </div>
             </PostDetailHeader>
             <main>

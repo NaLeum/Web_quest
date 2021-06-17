@@ -12,11 +12,11 @@ const PostDetailContainer = ({match,history}) => {
     useEffect(()=>{(
         async()=>{
             try{
-                const result = await getPostDetailAPI(match.params.postIdx);
-                setPostDetailData(result);
-                setIsLike(result.isLike);
-                setLikeCount(result.likeCount);
-                console.log(result)
+                const postResult = await getPostDetailAPI(match.params.postIdx);
+                setPostDetailData(postResult);
+                setIsLike(postResult.isLike);
+                setLikeCount(postResult.likeCount);
+                console.log(postResult)
             }catch(e){
                 console.error("[FAIL] GET POST DETAIL",e)
             }
