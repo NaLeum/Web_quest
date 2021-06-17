@@ -1,6 +1,6 @@
 import { useState } from "react";
-import CommentItem from "../../components/postDetail/comment/CommentItem";
-import {deleteCommentLikeAPI,postCommentLikeAPI} from "../../libs/api"
+import CommentItem from "../../../components/postDetail/comment/CommentItem";
+import {deleteCommentLikeAPI,postCommentLikeAPI} from "../../../libs/api"
 
 const CommentItemContainer = ({comment,postIdx}) => {
     const [commentLikeCount,setCommentLikeCount] = useState(comment.likeCount);
@@ -20,7 +20,7 @@ const CommentItemContainer = ({comment,postIdx}) => {
         // console.log(result)
     };
     return (
-        <CommentItem 
+        <CommentItem
             comment={comment} 
             commentLikeCount={commentLikeCount} 
             commentIsLike={commentIsLike}

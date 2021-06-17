@@ -1,4 +1,4 @@
-import CommentItemContainer from "../../../containers/postDetail/CommentItemContainer";
+import CommentItemContainer from "../../../containers/postDetail/comment/CommentItemContainer";
 import Wrapper from "../../common/Wrapper";
 
 

@@ -124,3 +124,19 @@ export const deleteCommentLikeAPI = async(commentIdx) => {
         console.error('[FAIL] DELETE COMMENT LIKE',e);
     }
 }
+
+// 댓글생성 400에러
+export const postCreateCommentAPI = async(content,postIdx,reply=0) => {
+    const formData = new FormData();
+    formData.append("postIdx",postIdx);
+    formData.append("content",content);
+    formData.append("reply",reply);
+
+    try{
+        const {data} = await client.post(`/comment/post`,formData);
+        console.log('[SUCCESS] POST CREATE COMMENT ',data);
+        return data
+    } catch(e) {
+        console.error('[FAIL] POST CREATE COMMENT',e);
+    }
+}

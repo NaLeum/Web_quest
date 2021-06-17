@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { withRouter } from "react-router";
-import CommentList from "../../components/postDetail/comment/CommentList"
-import { getCommentListAPI } from "../../libs/api";
+import CommentList from "../../../components/postDetail/comment/CommentList";
+import { getCommentListAPI } from "../../../libs/api";
+import CommentInputContainer from "./CommentInputContainer";
 
 
 
@@ -21,9 +22,14 @@ const CommentListContainer = ({match}) => {
         }
     )();
     },[match.params.postIdx]);
+
     return(
-        commentData.length !== 0 &&
-            <CommentList commentData={commentData} postIdx={match.params.postIdx} />
+        <>
+            <CommentInputContainer  setCommentData={setCommentData}/>
+            {commentData.length !== 0 &&
+                    <CommentList commentData={commentData} postIdx={match.params.postIdx} />
+                }
+        </>
     )
 }
 
