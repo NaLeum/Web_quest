@@ -51,6 +51,7 @@ const CommentItemContainer = ({comment,postIdx,setCommentData,setCommentCount,co
             onCommentLikeClick={onCommentLikeClick}
             onDeleteComment={onDeleteComment}
             onReplyClick={onReplyClick}
+            postIdx={postIdx}
             reply={reply}
         />
     )

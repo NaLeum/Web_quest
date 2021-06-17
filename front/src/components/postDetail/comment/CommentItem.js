@@ -69,8 +69,10 @@ const DeleteButton = styled.span`
 `;
 const CommentItem = ({
     comment,
+    postIdx,
     onCommentLikeClick,
-    commentLikeCount,commentIsLike,
+    commentLikeCount,
+    commentIsLike,
     onDeleteComment,
     onReplyClick,
     inputVisible,
@@ -100,8 +102,7 @@ const CommentItem = ({
             <CommentFooter>
                 <div>
                     <FooterItem>{timeValue}</FooterItem>
-                    {!reply && <FooterItem onClick={onReplyClick}>답글달기</FooterItem>
-}
+                    {!reply && <FooterItem onClick={onReplyClick}>답글달기</FooterItem>}
                 </div>
                 <CommentLike onClick={onCommentLikeClick} commentIsLike={commentIsLike} >
                     좋아요 {commentLikeCount}
@@ -122,6 +123,10 @@ const CommentItem = ({
                 <CommentList 
                     commentData={comment.reply}
                     reply={true} 
+                    postIdx={postIdx}
+                    setCommentData={setCommentData}
+                    setCommentCount={setCommentCount}
+                    commentCount={commentCount}
                 />
             }
         </CommentWrapper>
